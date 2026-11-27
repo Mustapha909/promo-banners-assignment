@@ -7,6 +7,7 @@ export interface RuntimeLocals {
   runtime?: {
     env?: Record<string, string | undefined> & {
       DROPPED_CONVERSIONS?: KVNamespace;
+      BANNERS?: KVNamespace;
     };
     ctx?: {
       waitUntil: (p: Promise<unknown>) => void;
@@ -28,6 +29,10 @@ export function getRuntimeCtx(locals: unknown): NonNullable<RuntimeLocals["runti
 /** The DROPPED_CONVERSIONS KV namespace, or undefined when not bound. */
 export function getKv(locals: unknown): KVNamespace | undefined {
   return asRuntimeLocals(locals)?.runtime?.env?.DROPPED_CONVERSIONS;
+}
+
+export function getBannerKv(locals: unknown): KVNamespace | undefined {
+  return asRuntimeLocals(locals)?.runtime?.env?.BANNERS;
 }
 
 // Helper function to get environment variables with proper fallbacks

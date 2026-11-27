@@ -47,6 +47,7 @@ declare global {
       list_complete: boolean;
       cursor?: string;
     }>;
+    delete(key: string): Promise<void>;
   }
 
   /** Cloudflare Workers global; absent in Node/dev, so always guard with `typeof`. */
