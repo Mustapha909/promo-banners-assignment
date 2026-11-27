@@ -12,3 +12,5 @@ export interface Banner {
 }
 
 export type BannerStatus = "live" | "scheduled" | "expired" | "disabled";
+
+export type BannerInput = Omit<Banner, "id" | "createdAt" | "updatedAt">;
