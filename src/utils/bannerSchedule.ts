@@ -12,3 +12,9 @@ export function getBannerStatus(banner: Banner, now: Date): BannerStatus {
 
   return "live";
 }
+
+export function getActiveBanners(banners: Banner[], now: Date): Banner[] {
+  return banners
+    .filter((banner) => getBannerStatus(banner, now) === "live")
+    .sort((a, b) => a.priority - b.priority || b.startsAt.localeCompare(a.startsAt));
+}
